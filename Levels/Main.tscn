@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Levels/Geometry/Floor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Main.cs" type="Script" id=3]
+[ext_resource path="res://Geometry/Wall.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ProceduralSky" id=2]
+ground_horizon_color = Color( 0.67451, 0.705882, 0.733333, 1 )
+sun_latitude = 60.0
+sun_longitude = 30.0
+
+[sub_resource type="Environment" id=1]
+background_mode = 2
+background_sky = SubResource( 2 )
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Spatial"]
+script = ExtResource( 3 )
+fastClose = true
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+
+[node name="AreaGeometry" type="Spatial" parent="."]
+
+[node name="Floor" parent="AreaGeometry" instance=ExtResource( 1 )]
+skeleton = NodePath("../..")
+
+[node name="Wall" parent="AreaGeometry" instance=ExtResource( 4 )]
+transform = Transform( 7.76258, 0, 0, 0, 2.08409, 0, 0, 0, 0.2, -0.37047, 1.85065, -5.92906 )
+
+[node name="Wall2" parent="AreaGeometry" instance=ExtResource( 4 )]
+transform = Transform( 7.76258, 0, 0, 0, 2.08409, 0, 0, 0, 0.2, -0.746692, 1.7809, 4.82828 )
+
+[node name="Wall3" parent="AreaGeometry" instance=ExtResource( 4 )]
+transform = Transform( -0.109195, 0, -0.19998, 0, 2.08409, 0, 7.76181, 0, -0.00281337, -6.3049, 2.44325, -0.871816 )
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lighting"]
+transform = Transform( -0.866026, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5, 0 )
+shadow_enabled = true
+directional_shadow_max_distance = 250.0
+
+[editable path="Player"]
+[editable path="Player/Head"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CapsuleShape" id=1]
+
+[node name="MovementController" type="KinematicBody"]
+
+[node name="Collision" type="CollisionShape" parent="."]
+shape = SubResource( 1 )

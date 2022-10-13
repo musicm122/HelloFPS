@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>latestmajor</LangVersion>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <Compile Include="Types.fs" />
+        <Compile Include="CameraUtil.fs" />
+        <Compile Include="PhysicsUtil.fs" />
+        <Compile Include="Player.fs" />
+        <Compile Include="LevelFs.fs" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Reference Include="GodotSharp">
+        <HintPath>..\Ref\GodotSharp.dll</HintPath>
+      </Reference>
+      <Reference Include="GodotSharpEditor">
+        <HintPath>..\Ref\GodotSharpEditor.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Common\Common\Common.fsproj" />
+    </ItemGroup>
+    
+</Project>
