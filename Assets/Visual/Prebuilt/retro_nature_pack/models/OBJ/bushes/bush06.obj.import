@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/bush06.obj-2e474490fb5a8aaed21901b298f0b6dc.mesh"
+
+[deps]
+
+files=[ "res://.import/bush06.obj-2e474490fb5a8aaed21901b298f0b6dc.mesh" ]
+
+source_file="res://Assets/Visual/Prebuilt/retro_nature_pack/models/OBJ/bushes/bush06.obj"
+dest_files=[ "res://.import/bush06.obj-2e474490fb5a8aaed21901b298f0b6dc.mesh", "res://.import/bush06.obj-2e474490fb5a8aaed21901b298f0b6dc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

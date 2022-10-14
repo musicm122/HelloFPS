@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tree04_winter.obj-5fd8916841fba030e4d9bd8bd3636caa.mesh"
+
+[deps]
+
+files=[ "res://.import/tree04_winter.obj-5fd8916841fba030e4d9bd8bd3636caa.mesh" ]
+
+source_file="res://Assets/Visual/Prebuilt/retro_nature_pack/models/OBJ/trees/tree04_winter.obj"
+dest_files=[ "res://.import/tree04_winter.obj-5fd8916841fba030e4d9bd8bd3636caa.mesh", "res://.import/tree04_winter.obj-5fd8916841fba030e4d9bd8bd3636caa.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

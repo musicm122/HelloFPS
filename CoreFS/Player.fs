@@ -38,6 +38,7 @@ type MovementControllerFS() =
 
     override this._Ready() =
         this.gravity <- ProjectSetting.getGravity * this.gravityMultiplier
+        GD.Print("Current Gravity = "+ this.gravity.ToString())
         ()
 
     member this.getDirectionInput (globalBasis: Basis) (inputAxis: Vector2) =
@@ -93,7 +94,7 @@ type MovementControllerFS() =
                 this.velocity <- this.velocity.WithY(0f)
 
             this.snap <- Vector3.Zero
-            this.velocity <- this.velocity.WithY(-this.gravity * delta)
+            this.velocity <- this.velocity.SubFromY(this.gravity * delta)
 
         this.velocity <- accelerate this.velocity delta |> move
 

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/grass03.obj-b95aac2c8d687cc6c63d143707c2e1f7.mesh"
+
+[deps]
+
+files=[ "res://.import/grass03.obj-b95aac2c8d687cc6c63d143707c2e1f7.mesh" ]
+
+source_file="res://Assets/Visual/Prebuilt/retro_nature_pack/models/OBJ/grass/grass03.obj"
+dest_files=[ "res://.import/grass03.obj-b95aac2c8d687cc6c63d143707c2e1f7.mesh", "res://.import/grass03.obj-b95aac2c8d687cc6c63d143707c2e1f7.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

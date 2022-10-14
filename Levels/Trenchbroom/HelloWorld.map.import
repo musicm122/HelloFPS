@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/HelloWorld.map-4a43f78ac21f9af526eaec19d728fa9a.tres"
+
+[deps]
+
+source_file="res://Levels/Trenchbroom/HelloWorld.map"
+dest_files=[ "res://.import/HelloWorld.map-4a43f78ac21f9af526eaec19d728fa9a.tres" ]
+
+[params]
+
