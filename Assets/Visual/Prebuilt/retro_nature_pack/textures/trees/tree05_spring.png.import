@@ -14,7 +14,7 @@ dest_files=[ "res://.import/tree05_spring.png-5e119b091e3e8b41c6c4c6cd4cb02ac0.s
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

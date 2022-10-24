@@ -14,7 +14,7 @@ dest_files=[ "res://.import/tree06_summer.png-8a2ce4265aaaeb5782f80a083c626a02.s
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

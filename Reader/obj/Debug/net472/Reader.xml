@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Reader</name></assembly>
+<members>
+<member name="M:Reader.Effect.apply``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Create value which uses depenendency.
+</summary>
+</member>
+<member name="M:Reader.Effect.value``2(``0)">
+<summary>
+ Create value with no dependency requirements.
+</summary>
+</member>
+</members>
+</doc>

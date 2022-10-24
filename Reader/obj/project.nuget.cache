@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "x8G3aOaFBWcU3Gc54YkyHk31GzRbzRxFS68n20qJA/jSc5oifTXVnqVgAq8ftjAIzqgcS49MiQEogt3PswDKsA==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\godot\\Experminents\\hello_fps\\Reader\\Reader.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\terra\\.nuget\\packages\\fsharp.core\\6.0.1\\fsharp.core.6.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

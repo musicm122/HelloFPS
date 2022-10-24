@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Visual/Prebuilt/retro_nature_pack/textures/trees/tree01_fall.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Visual/Prebuilt/retro_nature_pack/models/OBJ/trees/tree01.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Levels/Environment/Examinable.cs" type="Script" id=3]
+
+[sub_resource type="SpatialMaterial" id=3]
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.98
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.98
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( 1.6845, 3.83136, 0.0826018, -1.71204, 0.948554, -0.0453877, -1.71204, 0.948554, 0.0822694, 0.658821, -0.269443, 0.146098, 0.0819808, 0.948554, -1.71191, -1.2632, 3.83136, 1.2355, -1.19904, 3.83136, -1.26312, 0.0823132, 0.948554, 1.6843, 1.23566, 3.83136, -1.26312, 1.6845, 0.948554, -0.0453877, 1.23566, 3.83136, 1.23584, -1.2632, 0.948554, 1.2355, -1.19904, 0.948554, -1.26312, 1.23566, 0.948554, 1.23584, -0.430027, -0.269443, -0.558011, 1.23566, 0.948554, -1.26312, -1.71204, 3.83136, -0.0453877, -0.0456888, 3.83136, 1.6843, -0.0456888, 3.83136, -1.71191, -0.430027, -0.269443, 0.530731, -1.2632, 0.948554, -1.19896, -0.237858, -0.269443, -0.558011, 1.6845, 0.948554, 0.0826018, -0.0456888, 0.948554, 1.6843, -0.0456888, 0.948554, -1.71191, 0.658821, -0.269443, 0.0181084, 1.6845, 3.83136, -0.0453877, 0.0823132, 3.83136, 1.6843, -1.71204, 3.83136, 0.0822694, 0.0819808, 3.83136, -1.71191, -0.237858, -0.269443, 0.530731, -1.2632, 3.83136, -1.19896 )
+
+[node name="Tree" type="Spatial"]
+script = ExtResource( 3 )
+areaPath = NodePath("MeshInstance/ExamineArea")
+Timeline = "hello_world"
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+skeleton = NodePath("")
+material/0 = SubResource( 3 )
+material/1 = SubResource( 4 )
+
+[node name="ExamineArea" type="Area" parent="MeshInstance"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/ExamineArea"]
+shape = SubResource( 2 )

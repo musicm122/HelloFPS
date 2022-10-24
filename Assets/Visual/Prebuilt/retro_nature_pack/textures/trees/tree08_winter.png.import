@@ -14,7 +14,7 @@ dest_files=[ "res://.import/tree08_winter.png-e179832de0481d738e475d4288100b6a.s
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

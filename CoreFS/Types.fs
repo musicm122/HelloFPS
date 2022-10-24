@@ -1,21 +1,38 @@
 ﻿namespace CoreFS.Types
 
-open Common
+open Common.Constants
+open Common.Interfaces
+open Common.Uti
+
+
+module CustomEvents =
+    let PlayerInteracting = Event<IExaminable>()
+
+    let PlayerInteractingComplete =
+        Event<unit>()
+
+    let PlayerInteractingEvent = Event<unit>()
+
+    let PlayerInteractingUnavailable =
+        Event<unit>()
+
+    let PlayerInteractingAvailable =
+        Event<unit>()
 
 
 [<Struct>]
 type SupportedInput =
     | UICancel
     | ChangeMouseInput
-    
+
     member this.AsString =
         match this with
-        | UICancel -> "ui_cancel"
-        | ChangeMouseInput -> "change_mouse_input"
-            
+        | UICancel -> InputActions.UICancel
+        | ChangeMouseInput -> InputActions.ChangeMouseInput
+
     static member Cases =
         DIUtil.UnionCasesOf<SupportedInput>()
 
     static member InputStrings() =
-        SupportedInput.Cases |> Array.map(fun case -> case.AsString)
-        
+        SupportedInput.Cases
+        |> Array.map (fun case -> case.AsString)

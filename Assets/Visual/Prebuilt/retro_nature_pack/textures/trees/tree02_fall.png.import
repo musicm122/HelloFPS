@@ -14,7 +14,7 @@ dest_files=[ "res://.import/tree02_fall.png-2fc59f5915be3bf92044541ff0ea4ee9.ste
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
