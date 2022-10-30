@@ -11,9 +11,9 @@ open PhysicsUtil
 [<AllowNullLiteral>]
 type MovementControllerFS() =
     inherit KinematicBody()
-    
-    member val CanMove = true with get,set
-    
+
+    member val CanMove = true with get, set
+
     [<Export>]
     member val gravityMultiplier = 3.0f with get, set
 
@@ -43,14 +43,12 @@ type MovementControllerFS() =
     member val gravity = 0.0f with get, set
 
     override this._Ready() =
-        
-        DialogEvents.DialogInteractionStart.Publish
-            .Add(fun _ -> this.CanMove <- false)
-        
-        DialogEvents.DialogInteractionComplete.Publish
-            .Add(fun _ -> this.CanMove <- true)
-        
-        this.gravity <- ProjectSetting.getGravity * this.gravityMultiplier                       
+
+        DialogEvents.DialogInteractionStart.Publish.Add(fun _ -> this.CanMove <- false)
+
+        DialogEvents.DialogInteractionComplete.Publish.Add(fun _ -> this.CanMove <- true)
+
+        this.gravity <- ProjectSetting.getGravity * this.gravityMultiplier
         GD.Print("Current Gravity = " + this.gravity.ToString())
         ()
 
@@ -104,12 +102,10 @@ type MovementControllerFS() =
 
             this.snap <- Vector3.Zero
             this.velocity <- this.velocity.SubFromY(this.gravity * delta)
-        
+
         if this.CanMove then
-            this.velocity <-
-                accelerate this.velocity delta
-                |> move
-        
+            this.velocity <- accelerate this.velocity delta |> move
+
 
 
 [<AllowNullLiteral>]

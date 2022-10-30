@@ -44,7 +44,7 @@ module Extensions =
               target = target
               SignalConnection.signal = Godot.Signals.Area.AreaEntered
               args = None }
-            |>  this.TryConnectSignal
+            |> this.TryConnectSignal
 
         member this.ConnectAreaExited target methodName =
             { methodName = methodName
@@ -199,6 +199,20 @@ module Extensions =
                 arr[i] <- (this.Item(i) :?> 'a)
 
             arr
+
+        member this.Map(f) =
+            let result = new Godot.Collections.Array()
+
+            for item in this do
+                result.Add(f item) |> ignore
+
+            result
+
+        member this.Iter(f) =
+            for item in this do
+                f item
+
+            ()
 
         member this.Filter(predicate) =
             let result = new Godot.Collections.Array()

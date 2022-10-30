@@ -6,18 +6,44 @@ open System
 type GC_Array = Godot.Collections.Array
 type GC_Dictionary = Godot.Collections.Dictionary
 
+
+type DialogicSignals =
+    | Dialogic_Signal
+    | Event_Start
+    | Event_End
+    | Timeline_Start
+    | Timeline_End
+    | Auto_Advance_Toggled
+    member this.AsString() =
+        match this with
+        | Dialogic_Signal -> "dialogic_signal"
+        | Event_Start -> "event_start"
+        | Event_End -> "event_end"
+        | Timeline_Start -> "timeline_start"
+        | Timeline_End -> "timeline_end"
+        | Auto_Advance_Toggled -> "auto_advance_toggled"
+    static member All() =
+        [|  "dialogic_signal"
+            "event_start" 
+            "event_end"
+            "timeline_start" 
+            "timeline_end"
+            "auto_advance_toggled" |]
+    
 type DialogicSharp() =
+    
     static member val private _dialogic =
         ((GD.Load<Script>("res://addons/dialogic/Other/DialogicClass.gd"))) with get, set
 
     static member val private DEFAULT_DIALOG_RESOURCE = ("res://addons/dialogic/Nodes/DialogNode.tscn") with get, set
 
-    static member StartTimeline<'T>(timeline: string):'T =
+    static member Start(timeline: string) : Node =
         let callResult =
-            DialogicSharp.
-                _dialogic.Call("start", timeline, String.Empty, DialogicSharp.DEFAULT_DIALOG_RESOURCE, true)
-        let result = callResult :?> 'T
+            DialogicSharp._dialogic.Call("start", timeline, String.Empty, DialogicSharp.DEFAULT_DIALOG_RESOURCE, true)
+
+        let result = callResult :?> Node
         result
+
     static member StartWithAllArgs<'T>
         (timeline: string)
         (default_timeline: string)

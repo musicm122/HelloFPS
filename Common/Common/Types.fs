@@ -22,14 +22,12 @@ type SignalDisconnectionProblem =
     | OkDisconnection
 
 type SignalConnection =
-    { 
-      methodName: string
+    { methodName: string
       target: Godot.Object
       signal: string
       args: Godot.Collections.Array option }
     static member Default(signal, target, methodName) =
-        { 
-          methodName = methodName
+        { methodName = methodName
           target = target
           signal = signal
           args = None }

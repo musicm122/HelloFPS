@@ -2,7 +2,6 @@
 
 open System.Collections.Generic
 open Common.Types
-open Common.Extensions
 open Godot
 
 exception GodotSignalException of Godot.Error * string
@@ -42,7 +41,8 @@ type AudioManager() =
         // channel.Connect("finished", this, nameof(this.onStreamFinished), new Godot.Collections.Array(channel)) with
 
         //match channel.TryConnectSignal(connection) with
-        match channel.Connect("finished", this, nameof(this.onStreamFinished), new Godot.Collections.Array(channel)) with
+        match channel.Connect("finished", this, nameof (this.onStreamFinished), new Godot.Collections.Array(channel))
+            with
         | err when err = Error.Ok -> channel
         | ex ->
             let gEx =
