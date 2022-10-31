@@ -6,7 +6,6 @@ open Common.Uti
 open CoreFS.Events
 open CoreFS.Global
 open CoreFS.Services
-open CoreFS.Services.ThirdParty.Dialogic
 open Godot
 open Common
 
@@ -21,7 +20,7 @@ type ExamineFS() =
         DialogEvents.PlayerInteractionAvailabilityChange.Publish
 
     member this.OnInteractionComplete() =
-        this.Log.debug [| "OnInteractionComplete called" |]
+        this.Log.debug [| "Examinable.OnInteractionComplete called\r\n" |]
 
     member val CanInteract = false with get, set
 
@@ -31,13 +30,13 @@ type ExamineFS() =
     interface IExaminable with
         member this.OnExaminableBodyEntered(body: Node) =
             if body.IsPlayer() then
-                this.Log.debug [| "OnExaminableBodyEntered" |]
+                this.Log.debug [| "Examinable.OnExaminableBodyEntered called \r\n" |]
                 DialogEvents.PlayerInteractionAvailabilityChange.Trigger(true)
                 this.CanInteract <- true
 
         member this.OnExaminableBodyExited(body: Node) =
             if body.IsPlayer() then
-                this.Log.debug [| "OnExaminableAreaExited" |]
+                this.Log.debug [| "Examinable.OnExaminableAreaExited called \r\n" |]
                 DialogEvents.PlayerInteractionAvailabilityChange.Trigger(false)
                 this.CanInteract <- false
 
@@ -78,35 +77,9 @@ type ExamineFS() =
             | _ -> ()
         | _ -> ()
 
-    member this.dialogic_signal(listenerArg: System.Object) = GD.Print("dialogic_signal\r\n")
-    member this.Event_Start(listenerArg: System.Object) = GD.Print("Event_Start\r\n")
-    member this.Event_End(listenerArg: System.Object) = GD.Print("Event_End\r\n")
-    member this.Timeline_Start(listenerArg: System.Object) = GD.Print("Timeline_Start\r\n")
-    member this.Timeline_End(listenerArg: System.Object) = GD.Print("Timeline_End\r\n")
-    member this.l6(listenerArg: System.Object) = GD.Print("6\r\n")
-
     member this.DialogListener(listenerArg: System.Object) =
-        //(this :> IPauseable).Pause()
-        //this.OnDialogListener(listenerArg)
-        DialogEvents.DialogInteractionStart.Trigger()
-
-        Task.Run(fun () -> this.DialogComplete() |> Async.AwaitTask)
-        |> ignore
-
-    member this.DialogComplete() : Task =
-        let me =
-            this.DialogManager :> IDialogManager
-
-        let waitTime = 0.2f
-
-        GD.Print("DialogManager.DialogComplete called")
-        DialogEvents.DialogInteractionComplete.Trigger()
-
-        task {
-            do! me.PauseForCompletion waitTime
-            do! me.DialogComplete()
-        }
-
+        GD.Print("In Examinable.DialogListener with args " + listenerArg.ToString() + "\r\n")
+  
     member this.startDialog() =
         let args =
             { DialogArg.timeline = this.Timeline
@@ -114,16 +87,10 @@ type ExamineFS() =
               methodName = nameof this.DialogListener
               onComplete = Some this.OnInteractionComplete }
 
-        let dialogManager = this.DialogManager :> IDialogManager
+        let dialogManager =
+            this.DialogManager :> IDialogManager
+
         dialogManager.StartDialog this args
-        // let dialog = DialogicSharp.Start(args.timeline)
-
-        //let result = dialog.Connect(Timeline_End.AsString(), this, args.methodName)
-        // match result with
-        // | Error.Ok -> this.AddChild(dialog)
-        // | _ -> GD.PrintErr("StartDialog failed with args" + args.ToString())
-
-    //(this.DialogManager :> IDialogManager).StartDialog this args
 
     override this._Ready() =
         this.InteractableArea <- this.GetNode<Area>(this.areaPath)
@@ -173,12 +140,3 @@ type IndicatorFS() =
 
     override this._Ready() =
         this.Log.debug [| "IndicatorFS OnReady" |]
-// this.Log.debug [|
-//     "IndicatorFS connection to Area BodyEntered"
-//     this.Connect(Signals.Area.BodyEntered, this, nameof this.OnExaminableBodyEntered)
-// |]
-//
-// this.Log.debug [|
-//     "IndicatorFS connection to Area BodyExited"
-//     this.Connect(Signals.Area.BodyExited , this, nameof this.OnExaminableBodyExited)
-// |]

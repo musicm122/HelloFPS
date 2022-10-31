@@ -239,10 +239,7 @@ module Extensions =
         member this.IsPlayer() = this.Name.ToLowerInvariant() = "player"
 
         member this.WaitForSeconds seconds =
-            task {
-                this.ToSignal(this.GetTree().CreateTimer(seconds), Godot.Signals.Timer.Timeout)
-                |> ignore
-            }
+            task { return this.ToSignal(this.GetTree().CreateTimer(seconds), Godot.Signals.Timer.Timeout) }
 
         member this.GetOwnerAsSpatial() = this.Owner :?> Spatial
         member inline this.GetOwnerAs<'a when 'a :> Node>() = this.Owner :?> 'a

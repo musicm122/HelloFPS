@@ -5,7 +5,7 @@ open Godot
 
 type DialogArg =
     { timeline: string
-      methodName:string
+      methodName: string
       shouldRemove: bool
       onComplete: (unit -> unit) option }
 
@@ -32,9 +32,9 @@ type ILogger =
 [<Interface>]
 type IDialogManager =
     abstract member DialogListener: System.Object -> unit
-    abstract member DialogComplete: unit -> Task
+    abstract member DialogComplete: unit -> unit
     abstract member StartDialog: Node -> DialogArg -> unit
-    abstract member PauseForCompletion: float32 -> Task
+    abstract member PauseForCompletion: float32 -> unit
 
 [<Interface>]
 type IExaminable =

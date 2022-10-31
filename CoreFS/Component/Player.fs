@@ -79,7 +79,6 @@ type MovementControllerFS() =
                 vel
 
         this.inputAxis <- InputUtil.getInputAxis ()
-
         this.direction <- InputUtil.getDirectionInput this.GlobalTransform.basis this.inputAxis
 
         match this.IsOnFloor() with
@@ -91,7 +90,7 @@ type MovementControllerFS() =
             if this.velocity.y < 0f then
                 this.velocity <- this.velocity.WithY(0f)
 
-            if InputUtil.IsJumpJustPressed() then
+            if this.CanMove && InputUtil.IsJumpJustPressed() then
                 this.snap <- Vector3.Zero
                 this.velocity <- this.velocity.WithY(this.jumpHeight)
         | false ->

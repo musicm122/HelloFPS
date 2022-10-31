@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://textures/Fabric.png" type="Texture" id=9]
 [ext_resource path="res://textures/metal.png" type="Texture" id=10]
 [ext_resource path="res://Levels/Environment/Tree.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Levels/Environment/Building/market-col.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/Environment/Sphere.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SpatialMaterial" id=4]
@@ -382,9 +381,6 @@ shape = SubResource( 45 )
 shape = SubResource( 46 )
 
 [node name="Env" type="Spatial" parent="Spatial"]
-
-[node name="market-col" parent="Spatial/Env" instance=ExtResource( 12 )]
-transform = Transform( -0.392824, 0, -0.0754256, 0, 0.4, 0, 0.0754256, 0, -0.392824, 34.2502, 2.75751, 0 )
 
 [node name="Tree" parent="Spatial/Env" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.91465, 1.31447, -5.92502 )

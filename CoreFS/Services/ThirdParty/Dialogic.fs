@@ -22,16 +22,17 @@ type DialogicSignals =
         | Timeline_Start -> "timeline_start"
         | Timeline_End -> "timeline_end"
         | Auto_Advance_Toggled -> "auto_advance_toggled"
+
     static member All() =
-        [|  "dialogic_signal"
-            "event_start" 
-            "event_end"
-            "timeline_start" 
-            "timeline_end"
-            "auto_advance_toggled" |]
-    
+        [| "dialogic_signal"
+           "event_start"
+           "event_end"
+           "timeline_start"
+           "timeline_end"
+           "auto_advance_toggled" |]
+
 type DialogicSharp() =
-    
+
     static member val private _dialogic =
         ((GD.Load<Script>("res://addons/dialogic/Other/DialogicClass.gd"))) with get, set
 
